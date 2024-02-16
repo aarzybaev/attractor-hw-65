@@ -9,9 +9,8 @@ const PageForm: React.FC = () => {
     title: '',
     content: ''
   });
-  console.log('[PageFrom]');
-  const [pageName, setPageName] = useState<string>('');
 
+  const [pageName, setPageName] = useState<string>('');
   const navigate = useNavigate();
 
   const fetchPage = useCallback(async () => {

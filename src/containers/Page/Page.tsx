@@ -10,16 +10,16 @@ const Page: React.FC = () => {
   if (!pageName) {
     pageName = 'home';
   }
-  console.log('[PAGE]', pageName);
+
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState<ApiPage | null>(null);
 
   const fetchPage = useCallback(async () => {
     setIsLoading(true);
     try {
-      const response = await axiosAPI.get<ApiPage | null>('/pages/' + pageName + '.json');
-      if (response.data) {
-        setPage(response.data);
+      const {data: responsePage} = await axiosAPI.get<ApiPage | null>('/pages/' + pageName + '.json');
+      if (responsePage) {
+        setPage(responsePage);
       } else {
         setPage(null);
       }
