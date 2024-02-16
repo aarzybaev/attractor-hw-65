@@ -16,9 +16,9 @@ const PageForm: React.FC = () => {
   const fetchPage = useCallback(async () => {
     if (pageName) {
       try {
-        const response = await axiosAPI.get<ApiPage | null>('/pages/' + pageName + '.json');
-        if (response.data) {
-          setPage(response.data);
+        const {data: responsePage} = await axiosAPI.get<ApiPage | null>('/pages/' + pageName + '.json');
+        if (responsePage) {
+          setPage(responsePage);
         } else {
           setPage({
             title: '',
@@ -30,7 +30,6 @@ const PageForm: React.FC = () => {
       }
     }
 
-
   }, [pageName]);
 
   useEffect(() => {
@@ -38,7 +37,6 @@ const PageForm: React.FC = () => {
   }, [fetchPage]);
 
   const toEditePage = async (pageName: string) => {
-    console.log(pageName);
     try {
       await axiosAPI.put<ApiPage | null>('/pages/' + pageName + '.json', page);
     } catch (e) {
@@ -48,7 +46,6 @@ const PageForm: React.FC = () => {
 
   const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (pageName !== 'default') {
       void toEditePage(pageName);
     } else {
@@ -59,7 +56,6 @@ const PageForm: React.FC = () => {
     } else {
       navigate('/pages/' + pageName);
     }
-
   };
 
   const changePage = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
