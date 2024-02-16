@@ -92,7 +92,7 @@ const PageForm: React.FC = () => {
           className="form-select"
           onChange={selectPage}
           required>
-          <option selected value="default">Default</option>
+          <option defaultValue="default">Default</option>
           {pages}
         </select>
       </div>
