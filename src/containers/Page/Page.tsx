@@ -39,7 +39,7 @@ const Page: React.FC = () => {
 
   if (!isLoading && page) {
     pageArea = (
-      <div>
+      <div className="mt-3">
         <h3>{page.title}</h3>
         <p>{page.content}</p>
       </div>
