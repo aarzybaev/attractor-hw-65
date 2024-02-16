@@ -120,7 +120,7 @@ const PageForm: React.FC = () => {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary mt-3">Submit</button>
+      <button type="submit" className="btn btn-primary mt-3">Save</button>
     </form>
   );
 };
