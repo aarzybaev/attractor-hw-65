@@ -1,8 +1,23 @@
+import Appbar from './components/Appbar/Appbar';
+import {Route, Routes} from 'react-router-dom';
+import Page from './containers/Page/Page';
+import PageForm from './containers/PageForm/PageForm';
+
 const App = () => {
 
   return (
     <>
-      <h1>Hello</h1>
+      <header>
+        <Appbar/>
+      </header>
+      <main className="container-fluid">
+        <Routes>
+          <Route path="/" element={<Page/>} />
+          <Route path="/pages/:pageName" element={<Page/>}/>
+          <Route path="/pages/admin" element={<PageForm/>}/>
+          <Route path="*" element={<h1>Not found</h1>} />
+        </Routes>
+      </main>
     </>
   );
 };
