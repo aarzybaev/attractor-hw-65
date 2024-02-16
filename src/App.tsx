@@ -1,10 +1,9 @@
-import Appbar from './components/Appbar/Appbar';
 import {Route, Routes} from 'react-router-dom';
+import Appbar from './components/Appbar/Appbar';
 import Page from './containers/Page/Page';
 import PageForm from './containers/PageForm/PageForm';
 
 const App = () => {
-
   return (
     <>
       <header>
