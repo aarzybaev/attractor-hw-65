@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {PAGES} from '../../constants';
+import {useNavigate} from 'react-router-dom';
 import axiosAPI from '../../axiosAPI';
 import {ApiPage} from '../../type';
-import {useNavigate} from 'react-router-dom';
+import {PAGES} from '../../constants';
 
 const PageForm: React.FC = () => {
   const [page, setPage] = useState<ApiPage>({
@@ -18,7 +18,7 @@ const PageForm: React.FC = () => {
     if (pageName) {
       try {
         const response = await axiosAPI.get<ApiPage | null>('/pages/' + pageName + '.json');
-        if(response.data) {
+        if (response.data) {
           setPage(response.data);
         } else {
           setPage({
@@ -47,7 +47,7 @@ const PageForm: React.FC = () => {
     }
   };
 
-  const onFormSubmit = (e:React.FormEvent) => {
+  const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (pageName !== 'default') {
@@ -63,7 +63,7 @@ const PageForm: React.FC = () => {
 
   };
 
-  const changePage = (e:React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
+  const changePage = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setPage(prevState => ({
       ...prevState,
       [e.target.name]: e.target.value
@@ -71,7 +71,7 @@ const PageForm: React.FC = () => {
 
   };
 
-  const selectPage = (e:React.ChangeEvent<HTMLSelectElement>) => {
+  const selectPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPageName(e.target.value);
   };
 
@@ -109,14 +109,14 @@ const PageForm: React.FC = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="description">Content</label>
+        <label htmlFor="content">Content</label>
         <textarea style={{height: '200px'}}
-                  name="description"
-                  id="description"
-                  className="form-control"
-                  value={page.content}
-                  onChange={changePage}
-                  required
+          name="content"
+          id="content"
+          className="form-control"
+          value={page.content}
+          onChange={changePage}
+          required
         />
       </div>
 
