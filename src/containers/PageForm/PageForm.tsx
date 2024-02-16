@@ -44,10 +44,10 @@ const PageForm: React.FC = () => {
     }
   };
 
-  const onFormSubmit = (e: React.FormEvent) => {
+  const onFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (pageName !== 'default') {
-      void toEditePage(pageName);
+      await toEditePage(pageName);
     } else {
       alert('Select page');
     }
